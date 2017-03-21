@@ -2,6 +2,7 @@ import socket
 import audioSock
 import pyaudio
 import threading
+import microphone
 
 class Client(threading.Thread):
     def __init__(self, IP, port):
