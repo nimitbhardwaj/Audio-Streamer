@@ -2,6 +2,7 @@ import socket
 import threading
 import microphone
 import audioSock
+import pickle
 
 def getMyIP():
     mySock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -29,6 +30,8 @@ class Server(threading.Thread):
         aSock = audioSock.AudioSocket(clientSock)
         while True:
             sample = aSock.arecv()
+            sample = pickle.loads(sample)
             self.mic.playSample(sample)
             sample = self.mic.getSample()
+            sample = pickle.dumps(sample)
             aSock.sendSample(sample)
