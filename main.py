@@ -8,5 +8,5 @@ if ckFlag == 0:
 else:
     ip = raw_input('Enter the ip address of the server')
     port = int(raw_input('Enter the port number of the server'))
-    cliObj = client.Client()
+    cliObj = client.Client(ip, port)
     cliObj.start()
