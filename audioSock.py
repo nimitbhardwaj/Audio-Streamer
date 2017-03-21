@@ -10,4 +10,4 @@ class AudioSocket:
         return self.sample
     def sendSample(self, sample):
         CHUNK = 1024
-        self.socket.send(sample)
+        self.socket.sendall(sample)
