@@ -3,7 +3,6 @@ import audioSock
 import pyaudio
 import threading
 import microphone
-import pickle
 
 class Client(threading.Thread):
     def __init__(self, IP, port):
@@ -17,8 +16,6 @@ class Client(threading.Thread):
         aSock = audioSock.AudioSocket(self.clientSock)
         while True:
             sample = self.mic.getSample()
-            sample = pickle.dumps(sample)
             aSock.sendSample(sample)
             sample = aSock.arecv()
-            sample = pickle.loads(sample)
             self.mic.playSample(sample)
