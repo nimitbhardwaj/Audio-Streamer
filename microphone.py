@@ -4,7 +4,7 @@ import threading
 class Microphone(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
-        self.sample = 0
+        self.sample = None
         self.inputSample = None
         CHUNK = 1024
         RATE = 44100
